@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccesLayer.EFDAL.CategoryProductEF
 {
-	public class ICategoryPropertyEFDAL:GenericRepository<CategoryProperty>,ICategoryPropertyDAL
+	public class CategoryPropertyEFDAL:GenericRepository<CategoryProperty>,ICategoryPropertyDAL
 	{
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Abstract.CategoryProductService;
+using DataAccesLayer.Abstract.CategoryProductAbstract;
 using EntityLayer.CategoryProduct;
 using System;
 using System.Collections.Generic;
@@ -10,34 +11,41 @@ namespace BusinessLayer.Concrete.CategoryProductManager
 {
 	public class CategoryPhotoManager : ICategoryPhotoService
 	{
-		public CategoryPhoto GetByID(int id)
+		private readonly ICategoryPhotoDAL _categoryPhotoDAL;
+
+		public CategoryPhotoManager(ICategoryPhotoDAL categoryPhotoDAL)
 		{
-			throw new NotImplementedException();
+			_categoryPhotoDAL = categoryPhotoDAL;
 		}
 
-		public Task<CategoryPhoto> GetByIdAsync(int id)
+		public CategoryPhoto GetByID(int id)
 		{
-			throw new NotImplementedException();
+			return _categoryPhotoDAL.GetById(id);	
+		}
+
+		public async Task<CategoryPhoto> GetByIdAsync(int id)
+		{
+			return await _categoryPhotoDAL.GetByIdAsync(id);	
 		}
 
 		public void TAdd(CategoryPhoto t)
 		{
-			throw new NotImplementedException();
+			_categoryPhotoDAL.Insert(t);	
 		}
 
 		public void TDelete(CategoryPhoto t)
 		{
-			throw new NotImplementedException();
+			_categoryPhotoDAL.Delete(t);	
 		}
 
 		public List<CategoryPhoto> TGetList()
 		{
-			throw new NotImplementedException();
+			return _categoryPhotoDAL.GetAll();
 		}
 
 		public void TUpdate(CategoryPhoto t)
 		{
-			throw new NotImplementedException();
+			_categoryPhotoDAL.Update(t);
 		}
 	}
 }
